@@ -35,13 +35,6 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
-  // ログイン済みでルートにアクセスした場合は、一時的に ES ジェネレーターにリダイレクト
-  if (pathname === "/") {
-    const esUrl = request.nextUrl.clone();
-    esUrl.pathname = "/tools/es-generator";
-    return NextResponse.redirect(esUrl);
-  }
-
   // ログイン済みならそのまま通す
   return NextResponse.next();
 }
